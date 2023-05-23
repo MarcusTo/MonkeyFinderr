@@ -9,11 +9,13 @@ namespace MonkeyFinder.ViewModel
         MonkeyService monkeyService;
         public ObservableCollection<Monkey> Monkeys { get; set; } = new();
         IConnectivity connectivity;
-        public MonkeysViewModel(MonkeyService monkeyService, IConnectivity connectivity)
+        IGeolocation geolocation;
+        public MonkeysViewModel(MonkeyService monkeyService, IConnectivity connectivity, IGeolocation geolocation)
         {
             Title = "Monkey Finder";
             this.monkeyService = monkeyService;
             this.connectivity = connectivity;
+            this.geolocation = geolocation;
         }
         [RelayCommand]
         async Task GoToDetailsAsync(Monkey monkey)
