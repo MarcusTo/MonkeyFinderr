@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MonkeyFinder.ViewModel
+﻿
+namespace ViewModel
 {
-    internal class MonkeysViewModel
+    internal class MonkeysViewModel : BaseViewModel
     {
+
+
+
+
     }
 }
