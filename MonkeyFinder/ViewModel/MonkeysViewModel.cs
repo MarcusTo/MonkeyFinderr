@@ -1,4 +1,5 @@
-﻿using MonkeyFinder.View;
+﻿using Microsoft.Maui.Networking;
+using MonkeyFinder.View;
 using Services;
 
 namespace MonkeyFinder.ViewModel
@@ -7,33 +8,42 @@ namespace MonkeyFinder.ViewModel
     {
         MonkeyService monkeyService;
         public ObservableCollection<Monkey> Monkeys { get; set; } = new();
-        public MonkeysViewModel(MonkeyService monkeyService)
+        IConnectivity connectivity;
+        public MonkeysViewModel(MonkeyService monkeyService, IConnectivity connectivity)
         {
             Title = "Monkey Finder";
             this.monkeyService = monkeyService;
+            this.connectivity = connectivity;
         }
         [RelayCommand]
         async Task GoToDetailsAsync(Monkey monkey)
         {
             if (monkey is null)
                 return;
-
             await Shell.Current.GoToAsync($"{nameof(DetailsPage)}", true,
                 new Dictionary<string, object>
                 {
                 {"Monkey", monkey }
                 });
         }
-
         [RelayCommand]
         async Task GetMonkeyAsync()
         {
             if (IsBusy)
                 return;
+
             try
             {
+                if (connectivity.NetworkAccess != NetworkAccess.Internet)
+                {
+                    await Shell.Current.DisplayAlert("Internet issue",
+                        $"Check your internet and try again!", "OK");
+                    return;
+                }
+
                 IsBusy = true;
                 var monkeys = await monkeyService.GetMonkeys();
+
                 if (Monkeys.Count != 0)
                     Monkeys.Clear();
                 foreach (var monkey in monkeys)
