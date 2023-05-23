@@ -1,4 +1,5 @@
 ﻿using MonkeyFinder.View;
+using MonkeyFinder.ViewModel;
 using Services;
 using ViewModel;
 
@@ -20,6 +21,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<MonkeyService>();
         builder.Services.AddSingleton<MonkeysViewModel>();
+        builder.Services.AddSingleton<MonkeyDetailsViewModel>();
+        builder.Services.AddSingleton<DetailsPage>();
 
         return builder.Build();
 	}

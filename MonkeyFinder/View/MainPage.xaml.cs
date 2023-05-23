@@ -1,3 +1,4 @@
+using MonkeyFinder.ViewModel;
 using ViewModel;
 
 namespace MonkeyFinder.View;

@@ -1,6 +1,6 @@
 ﻿global using System.Diagnostics;
 global using MonkeyFinder.Model;
-global using MonkeyFinder.ViewModel;
+global using ViewModel;
 global using System.Collections.ObjectModel;
 global using System.ComponentModel;
 global using System.Runtime.CompilerServices;

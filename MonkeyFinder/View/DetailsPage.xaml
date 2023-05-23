@@ -2,11 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MonkeyFinder.View.DetailsPage"
-             Title="DetailsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             xmlns:viewmodel="clr-namespace:ViewModel"
+             x:DataType="viewmodel:MonkeyDetailsViewModel"
+             Title="{Binding Monkey.Name}">
+    
+    
+            <Label Text="{Binding Monkey.Details}"
+                FontSize="25" />
+    
+    
 </ContentPage>
