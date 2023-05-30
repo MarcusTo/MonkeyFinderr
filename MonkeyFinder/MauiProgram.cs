@@ -1,7 +1,6 @@
 ﻿using MonkeyFinder.View;
-using MonkeyFinder.ViewModel;
-using Services;
 using ViewModel;
+using Services;
 
 namespace MonkeyFinder;
 
